@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EdTech Lab | VinUniversity</title>
+  <meta name="description" content="EdTech Lab thuộc VinUniversity nghiên cứu và phát triển công nghệ giáo dục lấy người học làm trung tâm." />
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #667085;
+      --line: #e4e9f1;
+      --primary: #173b67;
+      --primary-2: #245a92;
+      --accent: #eef5fc;
+      --soft: #f9fbfd;
+      --shadow: 0 16px 38px rgba(20, 36, 64, 0.08);
+      --radius: 20px;
+      --max: 1140px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--primary-2);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 15px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      color: var(--primary);
+      font-size: 17px;
+      letter-spacing: 0.2px;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      white-space: nowrap;
+      align-items: center;
+    }
+
+    .navlinks a {
+      color: #344054;
+      font-weight: 600;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 85% 10%, rgba(36, 90, 146, 0.18), transparent 30%),
+        radial-gradient(circle at 8% 25%, rgba(36, 90, 146, 0.10), transparent 32%),
+        linear-gradient(135deg, #ffffff 0%, #edf4fb 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 78px 22px 64px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 13px;
+      border: 1px solid #cbdced;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      color: var(--primary);
+      font-size: clamp(38px, 5.5vw, 64px);
+      line-height: 1.04;
+      letter-spacing: -1.5px;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 760px;
+      font-size: 19px;
+      color: #354254;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 18px;
+      border-radius: 12px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(20, 36, 64, 0.12);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--primary);
+      border-color: #cbdced;
+    }
+
+    .hero-panel {
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #d8e4f1;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .hero-panel h2 {
+      margin-top: 0;
+      color: var(--primary);
+      font-size: 22px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .metric {
+      background: #fbfdff;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      padding: 16px;
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--primary);
+      font-size: 25px;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 46px 22px 74px;
+    }
+
+    section {
+      margin-bottom: 30px;
+    }
+
+    .section-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      color: var(--primary);
+      font-size: 30px;
+      line-height: 1.2;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      color: #22324a;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .mini-card {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 21px;
+    }
+
+    .icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .project {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 23px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 250px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #cbdced;
+      background: #ffffff;
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .principles {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .principle {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 18px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+
+    .num {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--primary);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+    }
+
+    .notice {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 16px;
+      border: 1px solid #d8e4f1;
+      background: #eef5fc;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .contact-item {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--soft);
+    }
+
+    .footer {
+      background: #122943;
+      color: #edf5ff;
+      padding: 30px 22px;
+    }
+
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    .footer small {
+      color: #bfd0e1;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner,
+      .grid-2,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .navlinks {
+        display: none;
+      }
+
+      .hero-inner {
+        padding-top: 52px;
+      }
+
+      .section-card {
+        padding: 24px;
+      }
+    }
+
+    @media print {
+      .topbar, .cta-row, .footer {
+        display: none;
+      }
+
+      body {
+        background: #ffffff;
+      }
+
+      .section-card, .hero-panel, .mini-card, .project, .principle {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Điều hướng chính">
+      <div class="brand">
+        <strong>EdTech Lab</strong>
+        <span>Nhóm nghiên cứu công nghệ giáo dục, VinUniversity</span>
+      </div>
+      <div class="navlinks">
+        <a href="#mission">Sứ mệnh</a>
+        <a href="#research">Hướng nghiên cứu</a>
+        <a href="#projects">Dự án</a>
+        <a href="#contact">Liên hệ</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow">Research · Learning Technology · Human-Centered Design</div>
+        <h1>Công nghệ giáo dục lấy người học làm trung tâm</h1>
+        <p class="lead">
+          EdTech Lab nghiên cứu, thiết kế và đánh giá các công cụ học tập số nhằm hỗ trợ người học phát triển
+          năng lực ngôn ngữ, kỹ năng giao tiếp và sự tự tin trong môi trường học tập hiện đại.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects">Xem dự án</a>
+          <a class="btn btn-secondary" href="#contact">Liên hệ hợp tác</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel" aria-label="Thông tin tóm tắt">
+        <h2>Trọng tâm của lab</h2>
+        <p class="muted">
+          Kết hợp nghiên cứu giáo dục, thiết kế trải nghiệm học tập và phân tích dữ liệu để tạo ra công cụ hữu ích,
+          an toàn và có thể triển khai trong bối cảnh trường học.
+        </p>
+        <div class="metrics">
+          <div class="metric">
+            <strong>01</strong>
+            <span>Lấy học sinh làm trung tâm</span>
+          </div>
+          <div class="metric">
+            <strong>02</strong>
+            <span>Thiết kế dựa trên bằng chứng</span>
+          </div>
+          <div class="metric">
+            <strong>03</strong>
+            <span>Bảo vệ dữ liệu cá nhân</span>
+          </div>
+          <div class="metric">
+            <strong>04</strong>
+            <span>Ứng dụng trong thực tế</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <section id="mission" class="section-card">
+      <h2>Sứ mệnh</h2>
+      <p>
+        EdTech Lab hướng tới việc phát triển các giải pháp công nghệ giáo dục có tính nhân văn, dễ tiếp cận và phù hợp
+        với nhu cầu thực tế của người học, giáo viên và nhà trường.
+      </p>
+      <p>
+        Các hoạt động của lab tập trung vào việc biến công nghệ thành công cụ hỗ trợ quá trình học tập, thay vì thay thế
+        vai trò của giáo viên hoặc làm mất đi tính cá nhân trong giáo dục.
+      </p>
+
+      <div class="notice">
+        <strong>Nguyên tắc cốt lõi:</strong>
+        Công nghệ chỉ có giá trị khi giúp người học học tốt hơn, giáo viên dạy hiệu quả hơn và nhà trường ra quyết định
+        dựa trên thông tin rõ ràng hơn.
+      </div>
+    </section>
+
+    <section id="research" class="section-card">
+      <h2>Hướng nghiên cứu</h2>
+      <div class="grid-3">
+        <div class="mini-card">
+          <span class="icon">A</span>
+          <h3>Learning Analytics</h3>
+          <p class="muted">
+            Phân tích dữ liệu học tập để hiểu quá trình người học tương tác, tiến bộ và gặp khó khăn trong từng nhiệm vụ.
+          </p>
+        </div>
+        <div class="mini-card">
+          <span class="icon">B</span>
+          <h3>Interactive Learning</h3>
+          <p class="muted">
+            Thiết kế hoạt động học tập tương tác, trò chơi học tập và phản hồi tức thời giúp tăng động lực học.
+          </p>
+        </div>
+        <div class="mini-card">
+          <span class="icon">C</span>
+          <h3>Language Technology</h3>
+          <p class="muted">
+            Ứng dụng công nghệ xử lý tiếng nói và phản hồi tự động trong luyện phát âm, giao tiếp và học ngôn ngữ.
+          </p>
+        </div>
+        <div class="mini-card">
+          <span class="icon">D</span>
+          <h3>Assessment Design</h3>
+          <p class="muted">
+            Thiết kế phương pháp đánh giá học tập minh bạch, công bằng và phù hợp với năng lực thực tế của người học.
+          </p>
+        </div>
+        <div class="mini-card">
+          <span class="icon">E</span>
+          <h3>Child-Centered Design</h3>
+          <p class="muted">
+            Phát triển sản phẩm học tập số an toàn, dễ dùng và phù hợp với đặc điểm phát triển của trẻ em.
+          </p>
+        </div>
+        <div class="mini-card">
+          <span class="icon">F</span>
+          <h3>School Implementation</h3>
+          <p class="muted">
+            Nghiên cứu cách đưa công cụ công nghệ giáo dục vào bối cảnh trường học một cách thực tế và bền vững.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section-card">
+      <h2>Dự án tiêu biểu</h2>
+      <div class="grid-2">
+        <article class="project">
+          <div>
+            <h3>Trại hè Ngôn ngữ & Kỹ năng sống</h3>
+            <p>
+              Dự án hỗ trợ học sinh lớp 4 luyện phát âm hai phụ âm “L” và “N” thông qua ứng dụng học tập tương tác
+              trên máy tính bảng, kết hợp rèn luyện kỹ năng sống và sự tự tin khi giao tiếp.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Pronunciation</span>
+              <span class="tag">Tablet Learning</span>
+              <span class="tag">Life Skills</span>
+              <span class="tag">Primary School</span>
+            </div>
+          </div>
+          <a class="btn btn-secondary" href="trai-he-ngon-ngu-ky-nang-song.html">Xem trang dự án</a>
+        </article>
+
+        <article class="project">
+          <div>
+            <h3>Nền tảng học tập tương tác</h3>
+            <p>
+              Hướng phát triển các nguyên mẫu công cụ học tập số có khả năng ghi nhận dữ liệu tương tác, đưa ra phản hồi
+              và hỗ trợ giáo viên theo dõi quá trình học của học sinh.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Learning Data</span>
+              <span class="tag">Feedback</span>
+              <span class="tag">Prototype</span>
+              <span class="tag">EdTech</span>
+            </div>
+          </div>
+          <a class="btn btn-secondary" href="#contact">Trao đổi hợp tác</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="principles" class="section-card">
+      <h2>Nguyên tắc nghiên cứu và triển khai</h2>
+      <div class="principles">
+        <div class="principle">
+          <span class="num">1</span>
+          <div>
+            <h3>Minh bạch với người tham gia</h3>
+            <p class="muted">
+              Người học, phụ huynh và nhà trường cần được cung cấp thông tin rõ ràng về mục đích, quy trình và cách sử dụng dữ liệu.
+            </p>
+          </div>
+        </div>
+        <div class="principle">
+          <span class="num">2</span>
+          <div>
+            <h3>Bảo vệ dữ liệu cá nhân</h3>
+            <p class="muted">
+              Dữ liệu nghiên cứu được xử lý theo hướng giảm thiểu thông tin nhận dạng và chỉ phục vụ mục đích học thuật, báo cáo tổng hợp.
+            </p>
+          </div>
+        </div>
+        <div class="principle">
+          <span class="num">3</span>
+          <div>
+            <h3>Thiết kế dựa trên bằng chứng</h3>
+            <p class="muted">
+              Công cụ học tập cần được kiểm tra, đánh giá và cải thiện dựa trên dữ liệu thực tế, không chỉ dựa vào giả định thiết kế.
+            </p>
+          </div>
+        </div>
+        <div class="principle">
+          <span class="num">4</span>
+          <div>
+            <h3>Phù hợp với bối cảnh trường học</h3>
+            <p class="muted">
+              Giải pháp công nghệ cần dễ triển khai, dễ hỗ trợ và không làm tăng gánh nặng không cần thiết cho giáo viên.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="section-card">
+      <h2>Nhóm nghiên cứu</h2>
+      <p>
+        EdTech Lab là nhóm nghiên cứu công nghệ giáo dục thuộc VinUniversity, tập trung vào các dự án giao thoa giữa
+        giáo dục, công nghệ học tập, phân tích dữ liệu và thiết kế trải nghiệm người học.
+      </p>
+      <p class="muted">
+        Thông tin chi tiết về thành viên, đối tác và công bố khoa học có thể được cập nhật trên website này khi các dự án
+        chính thức được triển khai và công bố.
+      </p>
+    </section>
+
+    <section id="contact" class="section-card">
+      <h2>Liên hệ</h2>
+      <p>
+        Lab hoan nghênh các trao đổi học thuật, hợp tác nghiên cứu và triển khai thử nghiệm công nghệ giáo dục trong bối cảnh trường học.
+      </p>
+
+      <div class="contact">
+        <div class="contact-item">
+          <h3>Email</h3>
+          <p><a href="mailto:luyenphatam.ln@gmail.com">luyenphatam.ln@gmail.com</a></p>
+        </div>
+        <div class="contact-item">
+          <h3>Website</h3>
+          <p><a href="https://edtech-vinuni.github.io/">edtech-vinuni.github.io</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <strong>EdTech Lab</strong><br />
+        <small>Nhóm nghiên cứu công nghệ giáo dục, VinUniversity</small>
+      </div>
+      <small>© 2026 EdTech Lab. Research for better learning.</small>
+    </div>
+  </footer>
+</body>
+</html>
