@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trại hè Ngôn ngữ & Kỹ năng sống | VinUniversity</title>
+  <meta name="description" content="Thông tin dự án Trại hè Ngôn ngữ & Kỹ năng sống dành cho học sinh khối lớp 4, hỗ trợ luyện phát âm L/N thông qua công nghệ giáo dục." />
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #5f6b7a;
+      --line: #e5eaf1;
+      --primary: #173b67;
+      --primary-2: #245a92;
+      --accent: #e8f1fb;
+      --success: #eaf7ef;
+      --warning: #fff7e6;
+      --shadow: 0 14px 35px rgba(20, 36, 64, 0.08);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--primary-2);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .topbar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand strong {
+      color: var(--primary);
+      font-size: 16px;
+      letter-spacing: 0.2px;
+    }
+
+    .brand span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at top right, rgba(36, 90, 146, 0.18), transparent 34%),
+        linear-gradient(135deg, #ffffff 0%, #eef5fc 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 72px 22px 58px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid #cdddf0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      color: var(--primary);
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.08;
+      letter-spacing: -1.2px;
+    }
+
+    .lead {
+      font-size: 19px;
+      color: #354254;
+      max-width: 700px;
+      margin: 0 0 26px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(20, 36, 64, 0.12);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--primary);
+      border-color: #cdddf0;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid #d9e5f2;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    .hero-card h2 {
+      margin-top: 0;
+      color: var(--primary);
+      font-size: 22px;
+    }
+
+    .facts {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .fact {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 12px;
+      align-items: start;
+      color: #374151;
+    }
+
+    .icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 44px 22px 70px;
+    }
+
+    section {
+      margin-bottom: 28px;
+    }
+
+    .section-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 30px;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin: 0 0 14px;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    h3 {
+      color: #22324a;
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .mini-card {
+      background: #fbfcfe;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      padding: 20px;
+    }
+
+    .mini-card .icon {
+      margin-bottom: 12px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #fbfcfe;
+    }
+
+    .num {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--primary);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    .notice {
+      border-radius: 15px;
+      padding: 18px 20px;
+      margin-top: 18px;
+      border: 1px solid #d7eadc;
+      background: var(--success);
+    }
+
+    .notice.warning {
+      border-color: #f1dfb9;
+      background: var(--warning);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 12px 0 0;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .contact-item {
+      padding: 18px;
+      border-radius: 15px;
+      border: 1px solid var(--line);
+      background: #fbfcfe;
+    }
+
+    .footer {
+      background: #122943;
+      color: #e9f1fb;
+      padding: 28px 22px;
+    }
+
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    .footer small {
+      color: #b9c9db;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .badge-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .badge {
+      background: #ffffff;
+      border: 1px solid #cdddf0;
+      color: var(--primary);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    @media (max-width: 860px) {
+      .hero-inner,
+      .two-col,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        align-items: flex-start;
+      }
+
+      .navlinks {
+        display: none;
+      }
+
+      .hero-inner {
+        padding-top: 48px;
+      }
+
+      .section-card {
+        padding: 22px;
+      }
+    }
+
+    @media print {
+      .topbar, .cta-row, .footer {
+        display: none;
+      }
+
+      body {
+        background: #ffffff;
+      }
+
+      .section-card, .hero-card, .mini-card, .step, .contact-item {
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Điều hướng chính">
+      <div class="brand">
+        <strong>Trại hè Ngôn ngữ & Kỹ năng sống</strong>
+        <span>Nhóm nghiên cứu công nghệ giáo dục, VinUniversity</span>
+      </div>
+      <div class="navlinks">
+        <a href="#muc-dich">Mục đích</a>
+        <a href="#quy-trinh">Quy trình</a>
+        <a href="#bao-mat">Bảo mật</a>
+        <a href="#lien-he">Liên hệ</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow">Dự án nghiên cứu công nghệ giáo dục dành cho học sinh lớp 4</div>
+        <h1>Trại hè Ngôn ngữ & Kỹ năng sống</h1>
+        <p class="lead">
+          Chương trình miễn phí trong 2 tuần, hỗ trợ học sinh luyện phát âm hai phụ âm “L” và “N”
+          thông qua hoạt động học tập tương tác trên máy tính bảng, kết hợp rèn luyện kỹ năng sống
+          và sự tự tin khi giao tiếp.
+        </p>
+        <div class="badge-row" aria-label="Thông tin nhanh">
+          <span class="badge">Miễn phí tham gia</span>
+          <span class="badge">10 buổi sáng</span>
+          <span class="badge">Dữ liệu được khử định danh</span>
+          <span class="badge">Tham gia tự nguyện</span>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#dong-y">Xem thông tin đồng ý tham gia</a>
+          <a class="btn btn-secondary" href="#lien-he">Gửi câu hỏi cho nhóm nghiên cứu</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Thông tin tóm tắt dự án">
+        <h2>Thông tin tóm tắt</h2>
+        <div class="facts">
+          <div class="fact">
+            <span class="icon">1</span>
+            <div><strong>Đối tượng:</strong> Học sinh khối lớp 4, Trường Tiểu học Hưng Đạo.</div>
+          </div>
+          <div class="fact">
+            <span class="icon">2</span>
+            <div><strong>Thời gian:</strong> 10 buổi sáng, từ thứ Hai đến thứ Sáu, 08:00 đến 11:00.</div>
+          </div>
+          <div class="fact">
+            <span class="icon">3</span>
+            <div><strong>Bắt đầu:</strong> Ngày 01 tháng 08 năm 2026.</div>
+          </div>
+          <div class="fact">
+            <span class="icon">4</span>
+            <div><strong>Đơn vị:</strong> Nhóm nghiên cứu công nghệ giáo dục thuộc VinUniversity.</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <main>
+    <section id="muc-dich" class="section-card">
+      <h2>Mục đích của dự án</h2>
+      <p>
+        Dự án được thiết kế nhằm hỗ trợ học sinh cải thiện tình trạng phát âm nhầm lẫn giữa hai phụ âm
+        “L” và “N” thông qua một ứng dụng học tập tương tác trên máy tính bảng.
+      </p>
+      <p>
+        Bên cạnh hoạt động luyện phát âm, chương trình tạo thêm cơ hội để học sinh rèn luyện kỹ năng sống,
+        luyện giao tiếp và xây dựng phong thái tự tin khi nói trước đám đông.
+      </p>
+
+      <div class="grid-3">
+        <div class="mini-card">
+          <span class="icon">A</span>
+          <h3>Luyện phát âm</h3>
+          <p class="muted">Các em luyện phát âm qua trò chơi ngắn, có phản hồi trực tiếp từ ứng dụng.</p>
+        </div>
+        <div class="mini-card">
+          <span class="icon">B</span>
+          <h3>Rèn kỹ năng sống</h3>
+          <p class="muted">Hoạt động được thiết kế phù hợp với lứa tuổi học sinh tiểu học.</p>
+        </div>
+        <div class="mini-card">
+          <span class="icon">C</span>
+          <h3>Nghiên cứu khoa học</h3>
+          <p class="muted">Dữ liệu tương tác đã khử định danh được dùng để cải thiện công cụ học tập số.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="quy-trinh" class="section-card">
+      <h2>Quy trình tham gia</h2>
+      <div class="timeline">
+        <div class="step">
+          <span class="num">01</span>
+          <div>
+            <h3>Buổi đầu tiên</h3>
+            <p>Học sinh thực hiện một bài kiểm tra phát âm ngắn, khoảng 10 phút, để ghi nhận mức ban đầu.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="num">02</span>
+          <div>
+            <h3>Các buổi học trong chương trình</h3>
+            <p>
+              Mỗi buổi học gồm hoạt động ngữ âm vui nhộn, thực hành kỹ năng sống và khoảng 10 đến 12 phút
+              luyện âm trên máy tính bảng dưới sự giám sát của nghiên cứu viên.
+            </p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="num">03</span>
+          <div>
+            <h3>Buổi cuối cùng</h3>
+            <p>Học sinh thực hiện một bài kiểm tra phát âm ngắn để đánh giá sự thay đổi sau chương trình.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="notice warning">
+        <strong>Lưu ý về đánh giá tự động:</strong>
+        Ứng dụng ghi nhận một số dữ liệu tương tác như số lần thử, số lần sử dụng gợi ý, thời gian luyện tập
+        và kết quả phản hồi. Việc đánh giá tự động giúp giảm ảnh hưởng chủ quan từ người đánh giá trực tiếp,
+        tuy nhiên kết quả kỹ thuật vẫn có thể có sai số.
+      </div>
+    </section>
+
+    <section id="bao-mat" class="section-card">
+      <h2>Bảo mật thông tin và quyền riêng tư</h2>
+      <div class="two-col">
+        <div>
+          <h3>Cách bảo vệ danh tính học sinh</h3>
+          <ul>
+            <li>Tên thật của học sinh được thay thế bằng mã số trước khi nhóm nghiên cứu phân tích dữ liệu.</li>
+            <li>Nhóm nghiên cứu chỉ làm việc với dữ liệu dưới dạng mã số, không dùng tên thật trong phân tích.</li>
+            <li>Kết quả nghiên cứu chỉ được trình bày ở dạng tổng hợp, không tiết lộ danh tính cá nhân.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Cách sử dụng dữ liệu</h3>
+          <ul>
+            <li>Dữ liệu được dùng cho mục đích nghiên cứu khoa học và cải thiện công cụ học tập số.</li>
+            <li>Dữ liệu nghiên cứu được lưu trữ an toàn trên hệ thống của VinUniversity.</li>
+            <li>Dữ liệu được xóa vĩnh viễn sau thời hạn lưu trữ theo thông tin trong phiếu đồng ý tham gia.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="notice">
+        <strong>Nguyên tắc chính:</strong>
+        Dự án không công bố tên, hình ảnh nhận dạng, hoặc thông tin cá nhân của bất kỳ học sinh nào trong báo cáo
+        hoặc bài báo khoa học.
+      </div>
+    </section>
+
+    <section id="tu-nguyen" class="section-card">
+      <h2>Quyền lợi và tính tự nguyện</h2>
+      <p>
+        Việc tham gia chương trình là hoàn toàn tự nguyện. Phụ huynh có quyền từ chối cho con tham gia hoặc rút khỏi
+        chương trình vào bất kỳ thời điểm nào mà không ảnh hưởng đến kết quả học tập của học sinh tại trường.
+      </p>
+      <p>
+        Dự án có mức độ rủi ro tối thiểu. Một số học sinh có thể cảm thấy bối rối hoặc nản lòng khi gặp khó khăn
+        trong quá trình luyện phát âm. Ứng dụng được thiết kế giới hạn số lần thử mỗi từ, và nghiên cứu viên sẽ luôn
+        đồng hành, hỗ trợ học sinh trong suốt chương trình.
+      </p>
+    </section>
+
+    <section id="dong-y" class="section-card">
+      <h2>Thông tin đồng ý tham gia</h2>
+      <p>
+        Phụ huynh vui lòng đọc kỹ thông tin dự án trước khi ký phiếu đồng ý cho học sinh tham gia. Việc ký xác nhận
+        thể hiện rằng phụ huynh đã hiểu mục đích, quy trình, quyền lợi, tính tự nguyện và cách bảo mật dữ liệu của dự án.
+      </p>
+      <div class="notice warning">
+        Phiếu đồng ý chính thức sẽ được gửi qua nhà trường. Website này chỉ nhằm cung cấp thông tin tóm tắt để phụ huynh
+        dễ theo dõi và đặt câu hỏi khi cần.
+      </div>
+    </section>
+
+    <section id="lien-he" class="section-card">
+      <h2>Liên hệ nhóm nghiên cứu</h2>
+      <p>
+        Nếu có câu hỏi về chương trình, phụ huynh có thể liên hệ với nhóm nghiên cứu qua email hoặc biểu mẫu trực tuyến.
+      </p>
+
+      <div class="contact-box">
+        <div class="contact-item">
+          <h3>Email</h3>
+          <p><a href="mailto:luyenphatam.ln@gmail.com">luyenphatam.ln@gmail.com</a></p>
+        </div>
+        <div class="contact-item">
+          <h3>Biểu mẫu tiếp nhận ý kiến</h3>
+          <p><a href="https://forms.gle/tau7Tm9pPcwEW9k58" target="_blank" rel="noopener">Gửi câu hỏi qua Google Form</a></p>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top: 16px;">
+        Nhóm nghiên cứu dự kiến phản hồi các câu hỏi trong vòng 24 giờ làm việc.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Nhóm nghiên cứu công nghệ giáo dục</strong><br />
+        <small>VinUniversity</small>
+      </div>
+      <small>© 2026 Language & Life Skills Summer Camp. Thông tin dành cho phụ huynh.</small>
+    </div>
+  </footer>
+</body>
+</html>
